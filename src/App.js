@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [count, setCount] = useState(0);
+
+    const decrementCount = () => {
+        setCount(count - 1);
+    };
+
+    const incrementCount = () => {
+        setCount(count + 1);
+    };
+
+    return (
+    <Card style={{ width: '18rem' }} className={"App"}>
+        <Card.Body>
+            <Card.Title>COUNTER</Card.Title>
+            <Card.Title>{count}</Card.Title>
+            <Button variant="outline-primary" onClick={decrementCount}>Decrement</Button>
+            <Button variant="primary" onClick={incrementCount}>Increment</Button>
+        </Card.Body>
+    </Card>
+    );
+};
 
 export default App;
