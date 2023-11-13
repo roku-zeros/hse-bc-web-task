@@ -11,7 +11,7 @@ const App = () => {
             config.headers['Access-Control-Allow-Origin'] = '*'; // Установите заголовок Access-Control-Allow-Origin
             return config;
         });
-
+        // ршршрш
 
 
     const handleButtonClick = () => {
