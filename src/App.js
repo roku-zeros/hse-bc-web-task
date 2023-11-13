@@ -1,27 +1,32 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import axios from 'axios';
 import './App.css';
+import {CardBody} from "react-bootstrap";
 
 const App = () => {
-    const [count, setCount] = useState(0);
+    const handleButtonClick = () => {
+        const postData = {
+            login: 'frolova.a.e@sovkom.bank',
+            password: 'testpass21'
+        };
 
-    const decrementCount = () => {
-        setCount(count - 1);
-    };
-
-    const incrementCount = () => {
-        setCount(count + 1);
-    };
-
+        axios.post('http://94.139.254.148/managers/login', postData)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
     return (
     <Card style={{ width: '18rem' }} className={"App"}>
         <Card.Body>
-            <Card.Title>COUNTER</Card.Title>
-            <Card.Title>{count}</Card.Title>
-            <Button variant="outline-primary" onClick={decrementCount}>Decrement</Button>
-            <Button variant="primary" onClick={incrementCount}>Increment</Button>
+            <Card.Title>RESPONSE</Card.Title>
+            <CardBody><button onClick={handleButtonClick}>send response</button></CardBody>
         </Card.Body>
+
     </Card>
     );
 };
